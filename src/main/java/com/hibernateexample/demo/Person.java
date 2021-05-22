@@ -36,4 +36,8 @@ public class Person {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+
+    public Long getId() {
+        return id;
+    }
 }
