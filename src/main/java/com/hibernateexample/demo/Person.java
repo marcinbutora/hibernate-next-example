@@ -1,9 +1,6 @@
 package com.hibernateexample.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Person {
@@ -12,8 +9,16 @@ public class Person {
     private Long id;
     private String firstname;
     private String lastname;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private Address address;
 
     public Person() {
+    }
+
+    public Person(String firstname, String lastname, Address address) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.address = address;
     }
 
     public Person(String firstname, String lastname) {
@@ -35,5 +40,17 @@ public class Person {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
