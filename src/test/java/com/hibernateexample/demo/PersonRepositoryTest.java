@@ -29,12 +29,12 @@ class PersonRepositoryTest {
 //        Address addressTwo = new Address("Żywiec", "Sobieskiego", "34-300");
 
         //when
-        addressOne.setPersonList(new HashSet<Person>(Arrays.asList(personOne,personTwo,personThree)));
+        addressOne.setPersonList(new HashSet<Person>(Arrays.asList(personOne, personTwo, personThree)));
         addressRepository.save(addressOne);
 
         //then
         assertThat(addressRepository.findByCity("Katowice").get().getPersonList()).containsAll(Arrays.asList(personOne
-                ,personTwo,personThree));
+                , personTwo, personThree));
     }
 
 }
