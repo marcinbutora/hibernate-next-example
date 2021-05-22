@@ -1,11 +1,7 @@
 package com.hibernateexample.demo;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Address {
@@ -15,6 +11,8 @@ public class Address {
     private String city;
     private String street;
     private String zip;
+    @OneToMany(mappedBy = "address", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private Set<Person> personList;
 
     public Address() {
     }
@@ -47,5 +45,17 @@ public class Address {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Set<Person> getPersonList() {
+        return personList;
+    }
+
+    public void setPersonList(Set<Person> personList) {
+        this.personList = personList;
     }
 }
