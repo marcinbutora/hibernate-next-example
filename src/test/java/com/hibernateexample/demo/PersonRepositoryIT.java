@@ -25,7 +25,6 @@ class PersonRepositoryIT {
 
         //when
         person.setAddress(address);
-        address.setPerson(person);
         Person savedPerson = personRepository.save(person);
 
         //then

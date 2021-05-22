@@ -44,6 +44,7 @@ public class Person {
 
     public void setAddress(Address address) {
         this.address = address;
+        address.setPerson(this);
     }
 
     public Address getAddress() {
